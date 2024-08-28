@@ -1,0 +1,78 @@
+To link JavaScript with a Flask web application, you can follow these steps:
+
+1. Create a Flask application: If you haven't already, set up a Flask application. You can do this by installing Flask and creating a basic Flask app like this:
+
+```python
+from flask import Flask
+
+app = Flask(__name)
+
+@app.route('/')
+def index():
+    return 'Hello, World!'
+
+if __name__ == '__main__':
+    app.run()
+```
+
+2. Create a directory structure: Create a directory for your project and organize your files. For this example, let's assume you have the following directory structure:
+
+```
+project_folder/
+    app.py
+    static/
+        js/
+            script.js
+    templates/
+        index.html
+```
+
+3. Create an HTML template: Create an HTML template for your web page (e.g., `index.html`) inside the "templates" folder. In this template, you can include the JavaScript file like this:
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flask JavaScript Example</title>
+</head>
+<body>
+    <h1>Hello from Flask!</h1>
+
+    <!-- Include the JavaScript file -->
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
+```
+
+The `{{ url_for('static', filename='js/script.js') }}` generates the correct URL for your JavaScript file, assuming you have placed it in the "static" directory.
+
+4. Create the JavaScript file: Inside the "static/js" folder, create your JavaScript file (e.g., `script.js`). You can add your JavaScript code here. For example:
+
+```javascript
+// script.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Your JavaScript code here
+    alert('Hello from JavaScript!');
+});
+```
+
+5. Update your Flask route: Modify your Flask route (in `app.py`) to render the HTML template:
+
+```python
+from flask import Flask, render_template
+
+app = Flask(__name)
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+if __name__ == '__main__':
+    app.run()
+```
+
+6. Run your Flask application: Start your Flask application by running `python app.py` in your project folder.
+
+Now, when you access your Flask application in a web browser, the JavaScript code from `script.js` will be executed.
+
+Make sure to customize your HTML and JavaScript files according to your project's requirements. This is a basic example, and you can expand it to include more complex JavaScript functionality as needed.

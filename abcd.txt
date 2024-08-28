@@ -1,0 +1,11 @@
+python -m venv venv
+
+cd venv/Scripts && activate && cd .. && cd ..
+
+pip install flask
+
+pip install pycryptodome
+
+pip install flask-cors
+
+pip install Flask-SSLify

@@ -1,0 +1,23 @@
+To return an HTML file like `index.html` in a Flask app, you can use Flask's built-in functionality for rendering templates. Here are the steps:
+
+1. Create a folder in your project directory (let's call it "templates") to store your HTML templates.
+
+2. Put your `index.html` file inside the "templates" folder.
+
+3. In your `app.py`, import the `render_template` function from Flask:
+
+  
+   from flask import Flask, render_template
+   
+
+4. Modify your route to render the `index.html` file:
+
+
+   @app.route('/')
+   def hello_world():
+       return render_template('index.html')
+   
+
+5. Now, Flask will automatically look for the `index.html` file in the "templates" folder and render it when you access the root URL.
+
+Your Flask app will return the content of `index.html` when you access its root URL (http://127.0.0.1:5000/ if you're running it locally). Make sure you have the proper file structure in place for Flask to find your templates.

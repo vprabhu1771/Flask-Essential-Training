@@ -1,0 +1,32 @@
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
+from flask_admin import Admin
+from flask_admin.contrib.sqla import ModelView
+
+app = Flask(__name__)
+
+# Replace 'your_secret_key' with a strong secret key for your application
+app.config['SECRET_KEY'] = 'your_secret_key'
+
+# Replace the following with your database configuration
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///example.db'
+db = SQLAlchemy(app)
+
+# Define a data model (e.g., a simple Category model)
+class Category(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255), unique=True)
+
+    def __init__(self, name):
+        self.name = name
+
+# Initialize Flask-Admin
+admin = Admin(app, name='My Admin', template_mode='bootstrap3')
+
+# Create a view for the User model
+admin.add_view(ModelView(Category, db.session))
+
+if __name__ == '__main__':
+    with app.app_context():
+        db.create_all()
+    app.run(debug=True)

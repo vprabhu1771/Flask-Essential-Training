@@ -1,0 +1,50 @@
+To link CSS stylesheets to your Flask web application, you can use the `url_for` function in your HTML templates. Here's how you can do it step by step:
+
+1. First, make sure you have a directory for your CSS files. Create a directory called `static` in your Flask project folder if it doesn't already exist.
+
+   ```
+   /your_project_folder
+   ├── app.py
+   ├── templates
+   │   └── your_template.html
+   └── static
+       └── style.css
+   ```
+
+2. Place your CSS file (e.g., `style.css`) inside the `static` directory.
+
+3. In your HTML template (e.g., `your_template.html`), you can link the CSS file by using the `url_for` function:
+
+   ```html
+   <!DOCTYPE html>
+   <html>
+   <head>
+       <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+       <!-- Other head content -->
+   </head>
+   <body>
+       <!-- Your HTML content -->
+   </body>
+   </html>
+   ```
+
+   Here, `{{ url_for('static', filename='style.css') }}` generates the URL to the `style.css` file in the `static` directory. The `static` keyword is a special endpoint provided by Flask for serving static files, and `'style.css'` is the filename.
+
+4. Make sure to import the `url_for` function at the top of your Python script (e.g., `app.py`):
+
+   ```python
+   from flask import Flask, render_template
+
+   app = Flask(__name)
+
+   @app.route('/')
+   def index():
+       return render_template('your_template.html')
+
+   if __name__ == '__main__':
+       app.run(debug=True)
+   ```
+
+With this setup, your Flask application will serve the CSS file correctly, and your HTML template will include the stylesheet. Make sure to replace `'your_template.html'` with the actual name of your HTML template.
+
+Also, when serving your Flask application in a production environment, you may want to configure a web server like Nginx or Apache to serve static files efficiently.

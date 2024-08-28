@@ -1,0 +1,42 @@
+Here are the steps:
+
+1. Install Flask: If you haven't already, you'll need to install Flask. You can do this using pip, a Python package manager. Open your terminal and run:
+
+   
+   pip install Flask
+   
+
+2. Create a Flask App: Create a new directory for your Flask app, and within that directory, create a Python file, e.g., `app.py`.
+
+3. Import Flask: In `app.py`, import Flask and create an instance of the Flask app:
+
+
+   from flask import Flask
+
+   app = Flask(__name__)
+   
+
+4. Create a Route: Define a route in your app. This is how you'll handle different URLs. For example:
+
+
+   @app.route('/')
+   def hello_world():
+       return 'Hello, World!'
+   
+
+5. Run the App: At the end of your `app.py`, add the following lines to run the app:
+
+
+   if __name__ == '__main__':
+       app.run()
+   
+
+6. Start the Development Server: In your terminal, navigate to the directory containing `app.py` and run:
+
+   
+   python app.py
+   
+
+   This will start the development server, and you can access your app at `http://127.0.0.1:5000/` in your web browser.
+
+That's a basic setup for a Flask app. You can add more routes, templates, and functionality as needed for your project. Don't forget to install any additional packages you might require, like a database connector if your app needs one.

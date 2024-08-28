@@ -1,0 +1,38 @@
+The error `jinja2.exceptions.TemplateNotFound: index.html` suggests that Flask can't find the `index.html` template in the "templates" folder. To resolve this issue, make sure you have the correct directory structure and naming. Here are some steps to troubleshoot this problem:
+
+1. Verify Your Directory Structure:
+   - Your project structure should look like this:
+     
+     your_project/
+     ├── app.py
+     └── templates/
+         └── index.html
+     
+
+   Ensure that your `app.py` and `index.html` files are in the correct locations.
+
+2. Check the Template Folder Name:
+   - Make sure the folder containing your templates is named "templates" (with a lowercase "t"). Flask expects this folder name by default.
+
+3. Check the Template File Name:
+   - Ensure that your HTML file is named `index.html` with a lowercase "i" (case-sensitive).
+
+4. Check Flask Configuration:
+   - In your `app.py`, Flask should be initialized with the correct package name (usually `__name__`) and the template folder should be specified:
+
+
+   app = Flask(__name__, template_folder='templates')
+   
+
+   Make sure the `template_folder` is set to 'templates'.
+
+5. Check for Typos:
+   - Double-check for typos or misspellings in your code, including the template folder name, file names, and routes.
+
+6. Restart Your Flask App:
+   - After making changes, make sure to restart your Flask app to apply the modifications.
+
+7. Confirm Flask Version:
+   - Ensure that Flask is correctly installed, and you are using a supported version.
+
+If you've verified all of the above and are still encountering the `TemplateNotFound` error, the issue may be related to your project's file structure or Flask configuration. Please provide more details about your project's structure and code if you need further assistance.

@@ -1,0 +1,60 @@
+To make your Flask development server automatically restart when code changes are detected, you can use a tool like `Flask-Script` in combination with the built-in `debug` mode of Flask or a third-party tool like `Flask-Run` or `Flask-AppBuilder`. Here's how you can achieve automatic server restarts in Flask:
+
+1. Install Flask-Script (if not already installed):
+
+```bash
+pip install Flask-Script
+```
+
+2. Create a Flask application with a separate script for running the development server. Here's a modified version of your Flask app with the necessary changes:
+
+```python
+from flask import Flask
+from flask_script import Manager
+
+app = Flask(__name)
+manager = Manager(app)
+
+@app.route('/')
+def index():
+    return 'Hello, World!'
+
+if __name__ == '__main__':
+    manager.run()
+```
+
+3. Use Flask-Script to run your Flask application:
+
+In the command line, navigate to your project directory and run the following command:
+
+```bash
+python your_app.py runserver
+```
+
+Replace `your_app.py` with the name of your Flask application file.
+
+Now, your Flask development server will automatically restart whenever you make changes to your code. This feature is built into Flask when it runs in debug mode.
+
+Alternatively, you can use other development servers and tools for Flask, such as `Flask-Run` or `Flask-AppBuilder`, which can provide additional features for development, including automatic server restarts.
+
+Here's how you can use `Flask-Run`:
+
+1. Install Flask-Run (if not already installed):
+
+```bash
+pip install Flask-Run
+```
+
+2. Run your Flask application with Flask-Run:
+
+In the command line, navigate to your project directory and run the following command:
+
+```bash
+flaskrun your_app:app
+```
+
+Replace `your_app` with the name of your Flask application file.
+
+This will also automatically restart the server when code changes are detected.
+
+Please note that these tools are primarily for development purposes. When deploying your Flask application to a production server, you should not run it in debug mode, as it may expose sensitive information and security vulnerabilities.
