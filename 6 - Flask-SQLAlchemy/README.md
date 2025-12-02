@@ -1,9 +1,11 @@
+```
 https://flask-sqlalchemy.palletsprojects.com/en/3.1.x/
+```
 
-
-Installation
+# Installation
 
 Flask-SQLAlchemy is available on PyPI and can be installed with various Python tools. For example, to install or update the latest version using pip:
 
+```
 pip install -U Flask-SQLAlchemy
-
+```
