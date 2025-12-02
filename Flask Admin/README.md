@@ -3,6 +3,10 @@ https://flask-admin.readthedocs.io/en/latest/
 ```
 
 ```
+pip install -U Flask-SQLAlchemy
+```
+
+```
 pip install flask-admin
 ```
 
