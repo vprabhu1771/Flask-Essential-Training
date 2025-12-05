@@ -7,7 +7,7 @@ from flask_admin import Admin
 from flask_admin.contrib.sqla import ModelView
 import secrets
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Secret key
 app.config['SECRET_KEY'] = secrets.token_hex(32)
@@ -102,7 +102,7 @@ def delete_category(id):
 
 
 # Run App
-if _name_ == '_main_':
+if __name__ == '__main__':
     with app.app_context():
         db.create_all()
     app.run(debug=True)
